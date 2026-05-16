@@ -127,7 +127,7 @@ export default function Home() {
                 aspectRatio: { xs: "4 / 3", sm: "16 / 10", md: "16 / 9" },
                 borderRadius: 2,
               }}
-              imageSx={{ objectPosition: "center center" }}
+              imageSx={{ objectPosition: "63% center" }}
             />
           </Reveal>
 
@@ -145,9 +145,16 @@ export default function Home() {
               sx={{
                 p: { xs: 0, md: 4 },
                 borderRadius: 2,
+                border: {
+                  xs: "none",
+                  md: (theme) =>
+                    `1px solid ${
+                      theme.palette.mode === "dark" ? "rgba(246, 239, 232, 0.12)" : "rgba(89, 78, 68, 0.12)"
+                    }`,
+                },
                 bgcolor: (theme) =>
-                  theme.palette.mode === "dark" ? "rgba(36, 33, 29, 0.88)" : "rgba(249, 247, 242, 0.9)",
-                backdropFilter: { xs: "none", md: "blur(10px)" },
+                  theme.palette.mode === "dark" ? "rgba(36, 33, 29, 0.68)" : "rgba(249, 247, 242, 0.68)",
+                backdropFilter: { xs: "none", md: "blur(14px)" },
                 boxShadow: {
                   xs: "none",
                   md: (theme) =>
