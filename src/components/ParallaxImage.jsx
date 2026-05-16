@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 
-export default function ParallaxImage({ src, alt, speed = 0.08, imageSx, sx }) {
+export default function ParallaxImage({ src, alt, speed = 0.025, imageSx, sx }) {
   const ref = React.useRef(null);
   const [offset, setOffset] = React.useState(0);
 
@@ -25,7 +25,9 @@ export default function ParallaxImage({ src, alt, speed = 0.08, imageSx, sx }) {
       const rect = node.getBoundingClientRect();
       const viewportCenter = window.innerHeight / 2;
       const elementCenter = rect.top + rect.height / 2;
-      setOffset((viewportCenter - elementCenter) * speed);
+      const nextOffset = (viewportCenter - elementCenter) * speed;
+      const clampedOffset = Math.max(Math.min(nextOffset, 18), -18);
+      setOffset(clampedOffset);
     };
 
     const onScroll = () => {
@@ -58,8 +60,8 @@ export default function ParallaxImage({ src, alt, speed = 0.08, imageSx, sx }) {
           height: "100%",
           minHeight: "inherit",
           objectFit: "cover",
-          transform: `translate3d(0, ${offset}px, 0) scale(1.06)`,
-          transition: "transform 120ms linear",
+          transform: `translate3d(0, ${offset}px, 0) scale(1.025)`,
+          transition: "transform 180ms ease-out",
           ...imageSx,
         }}
       />
