@@ -263,6 +263,80 @@ body {
   }
 }
 
+.gallery-paint-background {
+  position: absolute;
+  inset: -52px auto auto -42px;
+  z-index: 0;
+  width: min(460px, 62vw);
+  height: 150px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.gallery-paint-background::after {
+  content: "";
+  position: absolute;
+  inset: -12px -48px -20px -30px;
+  background: linear-gradient(
+    90deg,
+    rgba(249, 247, 242, 0) 0%,
+    var(--gallery-paint-cover) 16%,
+    var(--gallery-paint-cover) 100%
+  );
+  transform: translate3d(-8%, 0, 0);
+  will-change: transform;
+  animation: gallery-paint-cover 1800ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms forwards;
+}
+
+.gallery-paint-background__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: rotate(-1.5deg);
+}
+
+.gallery-paint-background__shape {
+  stroke: none;
+}
+
+.gallery-paint-background__shape--soft {
+  fill: var(--gallery-paint-soft);
+  opacity: 0.72;
+}
+
+.gallery-paint-background__shape--main {
+  fill: var(--gallery-paint);
+  opacity: 0.9;
+}
+
+.gallery-paint-background__stroke {
+  fill: none;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.gallery-paint-background__stroke--ridge {
+  stroke: var(--gallery-paint-ridge);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.gallery-paint-background__stroke--fray {
+  stroke: var(--gallery-paint-fray);
+  stroke-width: 7;
+  stroke-linecap: square;
+}
+
+.gallery-paint-background__speckle {
+  fill: var(--gallery-paint-fray);
+}
+
+@keyframes gallery-paint-cover {
+  to {
+    transform: translate3d(118%, 0, 0);
+  }
+}
+
 button {
   cursor: pointer;
   font-family: inherit;
@@ -275,7 +349,8 @@ button:focus-visible {
 
 @media (max-width: 599.95px) {
   .paint-background,
-  .contact-paint-background {
+  .contact-paint-background,
+  .gallery-paint-background {
     display: none;
   }
 }
@@ -338,7 +413,9 @@ button:focus-visible {
   .contact-paint-background__stroke,
   .contact-paint-background__swash,
   .contact-paint-background__shape,
-  .contact-paint-background__speckle {
+  .contact-paint-background__speckle,
+  .gallery-paint-background__svg,
+  .gallery-paint-background__stroke {
     animation: none !important;
   }
 
@@ -368,7 +445,8 @@ button:focus-visible {
     opacity: 1;
   }
 
-  .contact-paint-background::after {
+  .contact-paint-background::after,
+  .gallery-paint-background::after {
     display: none;
   }
 }

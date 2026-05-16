@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Card, CardActionArea, CardContent, CardMedia, Stack, Typography } from "@mui/material";
+import GalleryPaintBackground from "../components/GalleryPaintBackground";
 import ImageDialog from "../components/ImageDialog";
 import Reveal from "../components/Reveal";
 import { galleryWorks } from "../content";
@@ -11,8 +12,11 @@ export default function Gallery() {
     <>
     <Stack spacing={4}>
       <Reveal>
-        <Box sx={{ maxWidth: 760 }}>
-          <Typography variant="h2">Gallery</Typography>
+        <Box sx={{ position: "relative", maxWidth: 760 }}>
+          <GalleryPaintBackground />
+          <Typography variant="h2" sx={{ position: "relative", zIndex: 1 }}>
+            Gallery
+          </Typography>
           <Typography color="text.secondary" sx={{ mt: 1.5, fontSize: "1.08rem", lineHeight: 1.7 }}>
             Murals, commissions, character pieces, portraits, florals, wildlife, and studio work from Blooming Bull
             Studios.
