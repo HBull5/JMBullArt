@@ -1,38 +1,39 @@
 import React from "react";
-import { Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
-
-const pieces = [
-  { title: "Morning Light", year: "2026", img: "/art/sample-1.jpg" },
-  { title: "Wildflowers", year: "2026", img: "/art/sample-2.jpg" },
-  { title: "Quiet Lake", year: "2026", img: "/art/sample-3.jpg" },
-];
+import { Box, Card, CardContent, CardMedia, Stack, Typography } from "@mui/material";
+import { featuredWorks } from "../content";
 
 export default function Gallery() {
   return (
-    <>
-      <Typography variant="h2" sx={{ mb: 2 }}>
-        Gallery
-      </Typography>
+    <Stack spacing={4}>
+      <Box sx={{ maxWidth: 760 }}>
+        <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700 }}>
+          Gallery
+        </Typography>
+        <Typography variant="h2">Selected works</Typography>
+        <Typography color="text.secondary" sx={{ mt: 1.5, fontSize: "1.08rem", lineHeight: 1.7 }}>
+          A starting collection of murals, commissioned work, and studio pieces from Blooming Bull Studios.
+        </Typography>
+      </Box>
 
-      <Grid container spacing={2}>
-        {pieces.map((p) => (
-          <Grid item xs={12} sm={6} md={4} key={p.title}>
-            <Card sx={{ height: "100%" }}>
-              <CardMedia component="img" height="240" image={p.img} alt={p.title} />
-              <CardContent>
-                <Typography fontWeight={700}>{p.title}</Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {p.year}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" },
+          gap: 2.5,
+        }}
+      >
+        {featuredWorks.map((piece) => (
+          <Card key={piece.title} sx={{ height: "100%" }}>
+            <CardMedia component="img" height="330" image={piece.image} alt={piece.title} />
+            <CardContent>
+              <Typography fontWeight={700}>{piece.title}</Typography>
+              <Typography variant="body2" color="text.secondary">
+                {piece.category}
+              </Typography>
+            </CardContent>
+          </Card>
         ))}
-      </Grid>
-
-      <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-        Put images in <code>public/art/</code> and reference them like <code>/art/filename.jpg</code>.
-      </Typography>
-    </>
+      </Box>
+    </Stack>
   );
 }
