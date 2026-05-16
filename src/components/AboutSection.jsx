@@ -19,21 +19,50 @@ export default function AboutSection() {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "0.9fr 1.1fr" },
-          gap: { xs: 4, md: 6 },
+          gridTemplateColumns: { xs: "1fr", md: "minmax(0, 1.35fr) minmax(360px, 0.65fr)" },
+          gap: { xs: 3, md: 0 },
           alignItems: "center",
         }}
       >
-        <Reveal direction="right">
+        <Reveal direction="right" sx={{ minWidth: 0 }}>
           <ParallaxImage
             src={images.about}
             alt="Jessica Bull artwork"
-            sx={{ minHeight: { xs: 360, md: 560 }, maxHeight: 620 }}
+            sx={{
+              minHeight: { xs: 300, sm: 420, md: 560 },
+              aspectRatio: { xs: "4 / 3", sm: "16 / 10", md: "16 / 9" },
+              borderRadius: 2,
+            }}
+            imageSx={{ objectPosition: "center center" }}
           />
         </Reveal>
 
-        <Reveal delay={120} direction="left">
-          <Stack spacing={2.5}>
+        <Reveal
+          delay={120}
+          direction="left"
+          sx={{
+            position: "relative",
+            zIndex: 1,
+            ml: { xs: 0, md: -8 },
+          }}
+        >
+          <Stack
+            spacing={2.5}
+            sx={{
+              p: { xs: 0, md: 4 },
+              borderRadius: 2,
+              bgcolor: (theme) =>
+                theme.palette.mode === "dark" ? "rgba(36, 33, 29, 0.88)" : "rgba(249, 247, 242, 0.9)",
+              backdropFilter: { xs: "none", md: "blur(10px)" },
+              boxShadow: {
+                xs: "none",
+                md: (theme) =>
+                  theme.palette.mode === "dark"
+                    ? "0 22px 54px rgba(0, 0, 0, 0.3)"
+                    : "0 22px 54px rgba(47, 41, 36, 0.12)",
+              },
+            }}
+          >
             <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700 }}>
               About the artist
             </Typography>
