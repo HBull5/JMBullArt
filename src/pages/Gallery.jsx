@@ -1,10 +1,14 @@
 import React from "react";
-import { Box, Card, CardContent, CardMedia, Stack, Typography } from "@mui/material";
+import { Box, Card, CardActionArea, CardContent, CardMedia, Stack, Typography } from "@mui/material";
+import ImageDialog from "../components/ImageDialog";
 import Reveal from "../components/Reveal";
 import { galleryWorks } from "../content";
 
 export default function Gallery() {
+  const [selectedImageIndex, setSelectedImageIndex] = React.useState(null);
+
   return (
+    <>
     <Stack spacing={4}>
       <Reveal>
         <Box sx={{ maxWidth: 760 }}>
@@ -34,17 +38,26 @@ export default function Gallery() {
             rootMargin="0px 0px 10% 0px"
           >
             <Card className="art-card" sx={{ height: "100%" }}>
-              <CardMedia component="img" height="330" image={piece.image} alt={piece.title} />
-              <CardContent>
-                <Typography fontWeight={700}>{piece.title}</Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {piece.category}
-                </Typography>
-              </CardContent>
+              <CardActionArea onClick={() => setSelectedImageIndex(index)} sx={{ height: "100%" }}>
+                <CardMedia component="img" height="330" image={piece.image} alt={piece.title} />
+                <CardContent>
+                  <Typography fontWeight={700}>{piece.title}</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {piece.category}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
             </Card>
           </Reveal>
         ))}
       </Box>
     </Stack>
+    <ImageDialog
+      items={galleryWorks}
+      selectedIndex={selectedImageIndex}
+      onSelectIndex={setSelectedImageIndex}
+      onClose={() => setSelectedImageIndex(null)}
+    />
+    </>
   );
 }

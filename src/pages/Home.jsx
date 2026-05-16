@@ -1,10 +1,11 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { Box, Button, Card, CardContent, CardMedia, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, CardActionArea, CardContent, CardMedia, Stack, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import BrushIcon from "@mui/icons-material/Brush";
 import PaletteIcon from "@mui/icons-material/Palette";
 import PlaceIcon from "@mui/icons-material/Place";
+import ImageDialog from "../components/ImageDialog";
 import ParallaxImage from "../components/ParallaxImage";
 import Reveal from "../components/Reveal";
 import { brand, homeFeaturedWorks, images } from "../content";
@@ -16,7 +17,10 @@ const aboutNotes = [
 ];
 
 export default function Home() {
+  const [selectedImageIndex, setSelectedImageIndex] = React.useState(null);
+
   return (
+    <>
     <Stack spacing={{ xs: 6, md: 9 }}>
       <Box
         sx={{
@@ -96,13 +100,15 @@ export default function Home() {
           {homeFeaturedWorks.map((piece, index) => (
             <Reveal key={piece.title} delay={index * 110}>
               <Card className="art-card">
-                <CardMedia component="img" height="280" image={piece.image} alt={piece.title} />
-                <CardContent>
-                  <Typography fontWeight={700}>{piece.title}</Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {piece.category}
-                  </Typography>
-                </CardContent>
+                <CardActionArea onClick={() => setSelectedImageIndex(index)}>
+                  <CardMedia component="img" height="280" image={piece.image} alt={piece.title} />
+                  <CardContent>
+                    <Typography fontWeight={700}>{piece.title}</Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {piece.category}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
               </Card>
             </Reveal>
           ))}
@@ -209,5 +215,12 @@ export default function Home() {
         </Box>
       </Stack>
     </Stack>
+    <ImageDialog
+      items={homeFeaturedWorks}
+      selectedIndex={selectedImageIndex}
+      onSelectIndex={setSelectedImageIndex}
+      onClose={() => setSelectedImageIndex(null)}
+    />
+    </>
   );
 }
