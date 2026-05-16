@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import App from "./App";
+import ScrollToTop from "./components/ScrollToTop";
 import { ColorModeContext } from "./colorMode";
 import { getTheme } from "./theme";
 
@@ -37,6 +38,7 @@ export default function Root() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <ScrollToTop />
           <App />
         </BrowserRouter>
       </ThemeProvider>
