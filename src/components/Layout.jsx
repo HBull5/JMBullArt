@@ -204,7 +204,10 @@ export default function Layout() {
             © {new Date().getFullYear()} {brand.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Artwork by {brand.artist} in the {brand.location}
+            Artwork by {brand.artist}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Made with ❤️ by Nick Bull
           </Typography>
         </Stack>
       </Container>
