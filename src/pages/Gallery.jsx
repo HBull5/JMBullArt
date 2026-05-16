@@ -27,7 +27,12 @@ export default function Gallery() {
         }}
       >
         {galleryWorks.map((piece, index) => (
-          <Reveal key={piece.title} delay={index * 110}>
+          <Reveal
+            key={piece.title}
+            delay={(index % 3) * 45}
+            duration={360}
+            rootMargin="0px 0px 10% 0px"
+          >
             <Card className="art-card" sx={{ height: "100%" }}>
               <CardMedia component="img" height="330" image={piece.image} alt={piece.title} />
               <CardContent>

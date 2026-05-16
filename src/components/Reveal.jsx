@@ -1,7 +1,15 @@
 import React from "react";
 import { Box } from "@mui/material";
 
-export default function Reveal({ children, delay = 0, direction = "up", sx, ...props }) {
+export default function Reveal({
+  children,
+  delay = 0,
+  direction = "up",
+  duration = 720,
+  rootMargin = "0px 0px -12% 0px",
+  sx,
+  ...props
+}) {
   const ref = React.useRef(null);
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -20,7 +28,7 @@ export default function Reveal({ children, delay = 0, direction = "up", sx, ...p
           observer.disconnect();
         }
       },
-      { rootMargin: "0px 0px -12% 0px", threshold: 0.12 },
+      { rootMargin, threshold: 0.12 },
     );
 
     const node = ref.current;
@@ -29,7 +37,7 @@ export default function Reveal({ children, delay = 0, direction = "up", sx, ...p
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [rootMargin]);
 
   const offset = {
     up: "translate3d(0, 28px, 0)",
@@ -44,7 +52,7 @@ export default function Reveal({ children, delay = 0, direction = "up", sx, ...p
       sx={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translate3d(0, 0, 0)" : offset,
-        transition: `opacity 720ms ease ${delay}ms, transform 720ms cubic-bezier(.2,.8,.2,1) ${delay}ms`,
+        transition: `opacity ${duration}ms ease ${delay}ms, transform ${duration}ms cubic-bezier(.2,.8,.2,1) ${delay}ms`,
         willChange: isVisible ? "auto" : "opacity, transform",
         ...sx,
       }}
