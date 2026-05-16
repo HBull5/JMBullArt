@@ -3,7 +3,7 @@ import muralImage from "./assets/church-mural.jpg";
 import lakeImage from "./assets/lake-painting.jpg";
 import jessicaPaint from "./assets/jessica-candid.jpg";
 import logoNoText from "./assets/logo.png";
-import starryNight from "./assets/starry-night.jpg";
+import homePainting from "./assets/home-painting.jpg";
 
 export const brand = {
   name: "Blooming Bull Studios",
@@ -21,7 +21,7 @@ export const images = {
   mural: muralImage,
   lake: lakeImage,
   about: jessicaPaint,
-  gallery: starryNight
+  gallery: homePainting
 };
 
 export const featuredWorks = [
