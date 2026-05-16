@@ -11,9 +11,14 @@ import {
   MenuItem,
   Stack,
   Toolbar,
+  Tooltip,
   Typography,
+  useTheme,
 } from "@mui/material";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import MenuIcon from "@mui/icons-material/Menu";
+import { ColorModeContext } from "../colorMode";
 import { brand } from "../content";
 
 const navItems = [
@@ -24,6 +29,8 @@ const navItems = [
 ];
 
 export default function Layout() {
+  const theme = useTheme();
+  const { mode, toggleColorMode } = React.useContext(ColorModeContext);
   const [mobileMenuAnchor, setMobileMenuAnchor] = React.useState(null);
   const isMobileMenuOpen = Boolean(mobileMenuAnchor);
 
@@ -35,15 +42,23 @@ export default function Layout() {
     setMobileMenuAnchor(null);
   };
 
+  const activeNavStyles = {
+    color: "primary.main",
+    backgroundColor: mode === "dark" ? "rgba(199,154,209,0.15)" : "rgba(141,109,149,0.12)",
+  };
+
   return (
     <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", bgcolor: "background.default" }}>
       <AppBar
         position="sticky"
         elevation={0}
         color="transparent"
-        sx={{ bgcolor: "rgba(249, 247, 242, 0.92)", backdropFilter: "blur(14px)" }}
+        sx={{
+          bgcolor: mode === "dark" ? "rgba(23, 21, 18, 0.92)" : "rgba(249, 247, 242, 0.92)",
+          backdropFilter: "blur(14px)",
+        }}
       >
-        <Toolbar sx={{ gap: 2, minHeight: { xs: 68, md: 88 }, flexWrap: "nowrap" }}>
+        <Toolbar sx={{ gap: 1.5, minHeight: { xs: 68, md: 88 }, flexWrap: "nowrap" }}>
           <Stack direction="row" spacing={1.5} alignItems="center" sx={{ flexGrow: 1, minWidth: 0 }}>
             <Box
               component="img"
@@ -76,16 +91,30 @@ export default function Layout() {
                 sx={{
                   color: "text.primary",
                   minWidth: "auto",
-                  "&.active": {
-                    color: "primary.main",
-                    backgroundColor: "rgba(141,109,149,0.12)",
-                  },
+                  "&.active": activeNavStyles,
                 }}
               >
                 {item.label}
               </Button>
             ))}
           </Stack>
+
+          <Tooltip title={mode === "dark" ? "Use light mode" : "Use dark mode"}>
+            <IconButton
+              color="inherit"
+              aria-label={mode === "dark" ? "Use light mode" : "Use dark mode"}
+              onClick={toggleColorMode}
+              sx={{
+                color: "text.primary",
+                border: `1px solid ${theme.palette.divider}`,
+                bgcolor: "background.paper",
+                flexShrink: 0,
+                "&:hover": { bgcolor: "action.hover" },
+              }}
+            >
+              {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+            </IconButton>
+          </Tooltip>
 
           <IconButton
             color="inherit"
@@ -97,8 +126,10 @@ export default function Layout() {
             sx={{
               display: { xs: "inline-flex", sm: "none" },
               color: "text.primary",
-              border: "1px solid rgba(89, 78, 68, 0.18)",
-              bgcolor: "rgba(255,255,255,0.45)",
+              border: `1px solid ${theme.palette.divider}`,
+              bgcolor: "background.paper",
+              flexShrink: 0,
+              "&:hover": { bgcolor: "action.hover" },
             }}
           >
             <MenuIcon />
@@ -117,8 +148,12 @@ export default function Layout() {
                   mt: 1,
                   minWidth: 180,
                   borderRadius: 2,
-                  border: "1px solid rgba(89, 78, 68, 0.14)",
-                  boxShadow: "0 18px 40px rgba(47, 41, 36, 0.16)",
+                  border: `1px solid ${theme.palette.divider}`,
+                  bgcolor: "background.paper",
+                  boxShadow:
+                    mode === "dark"
+                      ? "0 18px 40px rgba(0, 0, 0, 0.34)"
+                      : "0 18px 40px rgba(47, 41, 36, 0.16)",
                 },
               },
             }}
@@ -131,10 +166,7 @@ export default function Layout() {
                 onClick={closeMobileMenu}
                 sx={{
                   py: 1.25,
-                  "&.active": {
-                    color: "primary.main",
-                    backgroundColor: "rgba(141,109,149,0.12)",
-                  },
+                  "&.active": activeNavStyles,
                 }}
               >
                 {item.label}

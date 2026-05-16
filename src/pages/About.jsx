@@ -60,7 +60,8 @@ export default function About() {
               border: "1px solid rgba(89, 78, 68, 0.16)",
               borderRadius: 2,
               p: 3,
-              bgcolor: "rgba(255,255,255,0.58)",
+              bgcolor: (theme) =>
+                theme.palette.mode === "dark" ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.58)",
             }}
           >
             <Box sx={{ color: "primary.main" }}>{note.icon}</Box>
