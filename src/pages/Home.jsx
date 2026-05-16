@@ -2,6 +2,7 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Button, Card, CardContent, CardMedia, Stack, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import AboutSection from "../components/AboutSection";
 import ParallaxImage from "../components/ParallaxImage";
 import Reveal from "../components/Reveal";
 import { brand, featuredWorks, images } from "../content";
@@ -99,6 +100,8 @@ export default function Home() {
           ))}
         </Box>
       </Stack>
+
+      <AboutSection />
     </Stack>
   );
 }
