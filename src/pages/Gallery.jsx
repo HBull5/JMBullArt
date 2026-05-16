@@ -1,19 +1,22 @@
 import React from "react";
 import { Box, Card, CardContent, CardMedia, Stack, Typography } from "@mui/material";
+import Reveal from "../components/Reveal";
 import { featuredWorks } from "../content";
 
 export default function Gallery() {
   return (
     <Stack spacing={4}>
-      <Box sx={{ maxWidth: 760 }}>
-        <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700 }}>
-          Gallery
-        </Typography>
-        <Typography variant="h2">Selected works</Typography>
-        <Typography color="text.secondary" sx={{ mt: 1.5, fontSize: "1.08rem", lineHeight: 1.7 }}>
-          A starting collection of murals, commissioned work, and studio pieces from Blooming Bull Studios.
-        </Typography>
-      </Box>
+      <Reveal>
+        <Box sx={{ maxWidth: 760 }}>
+          <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700 }}>
+            Gallery
+          </Typography>
+          <Typography variant="h2">Selected works</Typography>
+          <Typography color="text.secondary" sx={{ mt: 1.5, fontSize: "1.08rem", lineHeight: 1.7 }}>
+            A starting collection of murals, commissioned work, and studio pieces from Blooming Bull Studios.
+          </Typography>
+        </Box>
+      </Reveal>
 
       <Box
         sx={{
@@ -22,16 +25,18 @@ export default function Gallery() {
           gap: 2.5,
         }}
       >
-        {featuredWorks.map((piece) => (
-          <Card key={piece.title} sx={{ height: "100%" }}>
-            <CardMedia component="img" height="330" image={piece.image} alt={piece.title} />
-            <CardContent>
-              <Typography fontWeight={700}>{piece.title}</Typography>
-              <Typography variant="body2" color="text.secondary">
-                {piece.category}
-              </Typography>
-            </CardContent>
-          </Card>
+        {featuredWorks.map((piece, index) => (
+          <Reveal key={piece.title} delay={index * 110}>
+            <Card className="art-card" sx={{ height: "100%" }}>
+              <CardMedia component="img" height="330" image={piece.image} alt={piece.title} />
+              <CardContent>
+                <Typography fontWeight={700}>{piece.title}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {piece.category}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Reveal>
         ))}
       </Box>
     </Stack>
