@@ -43,11 +43,6 @@ export const brand = {
 };
 
 export const images = {
-  hero: jessicaHeadshot,
-  mural: churchMural,
-  lake: lakePainting,
-  about: jessicaCandid,
-  gallery: homePainting,
   aristocats,
   babyVinny,
   barn,
@@ -83,9 +78,9 @@ export const images = {
 };
 
 export const homeFeaturedWorks = [
-  { title: "St John UMC Augusta Mural", category: "Mural", image: images.mural },
-  { title: "St John Lake Property", category: "Commissioned work", image: images.lake },
-  { title: "Selected Studio Work", category: "Original artwork", image: images.gallery },
+  { title: "St John UMC Augusta Mural", category: "Mural", image: images.churchMural },
+  { title: "St John Lake Property", category: "Commissioned work", image: images.lakePainting },
+  { title: "Selected Studio Work", category: "Original artwork", image: images.homePainting },
 ];
 
 export const galleryWorks = [
