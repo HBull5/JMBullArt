@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Button, Link, Stack, Typography } from "@mui/material";
-import EmailIcon from "@mui/icons-material/Email";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import StorefrontIcon from "@mui/icons-material/Storefront";
+import ContactPaintBackground from "../components/ContactPaintBackground";
 import Reveal from "../components/Reveal";
 import { brand } from "../content";
 
@@ -11,13 +11,16 @@ export default function Contact() {
   return (
     <Box
       sx={{
+        position: "relative",
         minHeight: { xs: "auto", md: 520 },
         display: "grid",
         placeItems: "center",
         py: { xs: 4, md: 8 },
+        overflow: "hidden",
       }}
     >
-      <Stack spacing={3} alignItems="center" textAlign="center" sx={{ maxWidth: 760 }}>
+      <ContactPaintBackground />
+      <Stack spacing={3} alignItems="center" textAlign="center" sx={{ position: "relative", zIndex: 1, maxWidth: 760 }}>
         <Reveal>
           <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700 }}>
             Contact
@@ -35,11 +38,8 @@ export default function Contact() {
 
         <Reveal delay={270}>
           <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5} alignItems="center">
-            <Button variant="contained" href={`mailto:${brand.email}`} startIcon={<EmailIcon />}>
-              Email Jessica
-            </Button>
             <Button
-              variant="outlined"
+              variant="contained"
               href={brand.instagram}
               target="_blank"
               rel="noreferrer"
@@ -56,7 +56,7 @@ export default function Contact() {
             >
               Facebook
             </Button>
-            <Button variant="outlined" href={brand.etsy} target="_blank" rel="noreferrer" startIcon={<StorefrontIcon />}>
+            <Button variant="contained" href={brand.etsy} target="_blank" rel="noreferrer" startIcon={<StorefrontIcon />}>
               Etsy
             </Button>
           </Stack>

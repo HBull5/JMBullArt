@@ -18,6 +18,7 @@ import {
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import MenuIcon from "@mui/icons-material/Menu";
+import AnimatedPaintBackground from "./AnimatedPaintBackground";
 import { ColorModeContext } from "../colorMode";
 import { brand } from "../content";
 
@@ -45,6 +46,7 @@ export default function Layout() {
     color: "primary.main",
     backgroundColor: mode === "dark" ? "rgba(199,154,209,0.15)" : "rgba(141,109,149,0.12)",
   };
+
   const mobileMenuItemStyles = {
     color: "text.primary",
     py: 1.25,
@@ -62,7 +64,17 @@ export default function Layout() {
   };
 
   return (
-    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", bgcolor: "background.default" }}>
+    <Box
+      sx={{
+        position: "relative",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        bgcolor: "background.default",
+        overflow: "hidden",
+      }}
+    >
+      <AnimatedPaintBackground />
       <AppBar
         position="sticky"
         elevation={0}
@@ -188,12 +200,12 @@ export default function Layout() {
         <Divider />
       </AppBar>
 
-      <Container maxWidth="lg" sx={{ py: { xs: 3, md: 6 }, flexGrow: 1 }}>
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, py: { xs: 3, md: 6 }, flexGrow: 1 }}>
         <Outlet />
       </Container>
 
       <Divider />
-      <Container sx={{ py: 3 }}>
+      <Container sx={{ position: "relative", zIndex: 1, py: 3 }}>
         <Stack
           direction={{ xs: "column", sm: "row" }}
           spacing={1}
@@ -201,13 +213,13 @@ export default function Layout() {
           alignItems={{ xs: "flex-start", sm: "center" }}
         >
           <Typography variant="body2" color="text.secondary">
-            © {new Date().getFullYear()} {brand.name}
+            {"\u00A9"} {new Date().getFullYear()} {brand.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Artwork by {brand.artist}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Made with ❤️ by Nick Bull
+            Made with {"\u2764\uFE0F"} by Nick Bull
           </Typography>
         </Stack>
       </Container>
