@@ -12,9 +12,6 @@ export default function Gallery() {
     <Stack spacing={4}>
       <Reveal>
         <Box sx={{ maxWidth: 760 }}>
-          <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700 }}>
-            Gallery
-          </Typography>
           <Typography variant="h2">Gallery</Typography>
           <Typography color="text.secondary" sx={{ mt: 1.5, fontSize: "1.08rem", lineHeight: 1.7 }}>
             Murals, commissions, character pieces, portraits, florals, wildlife, and studio work from Blooming Bull

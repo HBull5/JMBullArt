@@ -45,6 +45,21 @@ export default function Layout() {
     color: "primary.main",
     backgroundColor: mode === "dark" ? "rgba(199,154,209,0.15)" : "rgba(141,109,149,0.12)",
   };
+  const mobileMenuItemStyles = {
+    color: "text.primary",
+    py: 1.25,
+    "&:hover": {
+      color: "text.primary",
+      backgroundColor: mode === "dark" ? "rgba(246, 239, 232, 0.08)" : "rgba(141,109,149,0.08)",
+    },
+    "&.active": {
+      color: mode === "dark" ? "#F6EFE8" : "primary.main",
+      backgroundColor: mode === "dark" ? "rgba(199,154,209,0.24)" : "rgba(141,109,149,0.12)",
+    },
+    "&.active:hover": {
+      backgroundColor: mode === "dark" ? "rgba(199,154,209,0.3)" : "rgba(141,109,149,0.16)",
+    },
+  };
 
   return (
     <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", bgcolor: "background.default" }}>
@@ -163,10 +178,7 @@ export default function Layout() {
                 component={NavLink}
                 to={item.to}
                 onClick={closeMobileMenu}
-                sx={{
-                  py: 1.25,
-                  "&.active": activeNavStyles,
-                }}
+                sx={mobileMenuItemStyles}
               >
                 {item.label}
               </MenuItem>

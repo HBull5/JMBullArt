@@ -47,6 +47,15 @@ export function getTheme(mode = "light") {
       MuiButton: {
         styleOverrides: {
           root: { borderRadius: 999, paddingInline: 22 },
+          contained: {
+            color: "#fff",
+            "&:hover": {
+              color: "#fff",
+            },
+            "& .MuiButton-startIcon, & .MuiButton-endIcon": {
+              color: "inherit",
+            },
+          },
         },
       },
       MuiCard: {
