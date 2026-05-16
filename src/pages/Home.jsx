@@ -5,7 +5,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import AboutSection from "../components/AboutSection";
 import ParallaxImage from "../components/ParallaxImage";
 import Reveal from "../components/Reveal";
-import { brand, featuredWorks, images } from "../content";
+import { brand, homeFeaturedWorks, images } from "../content";
 
 export default function Home() {
   return (
@@ -85,7 +85,7 @@ export default function Home() {
             gap: 2.5,
           }}
         >
-          {featuredWorks.map((piece, index) => (
+          {homeFeaturedWorks.map((piece, index) => (
             <Reveal key={piece.title} delay={index * 110}>
               <Card className="art-card">
                 <CardMedia component="img" height="280" image={piece.image} alt={piece.title} />

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Card, CardContent, CardMedia, Stack, Typography } from "@mui/material";
 import Reveal from "../components/Reveal";
-import { featuredWorks } from "../content";
+import { galleryWorks } from "../content";
 
 export default function Gallery() {
   return (
@@ -11,9 +11,10 @@ export default function Gallery() {
           <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700 }}>
             Gallery
           </Typography>
-          <Typography variant="h2">Selected works</Typography>
+          <Typography variant="h2">Gallery</Typography>
           <Typography color="text.secondary" sx={{ mt: 1.5, fontSize: "1.08rem", lineHeight: 1.7 }}>
-            A starting collection of murals, commissioned work, and studio pieces from Blooming Bull Studios.
+            Murals, commissions, character pieces, portraits, florals, wildlife, and studio work from Blooming Bull
+            Studios.
           </Typography>
         </Box>
       </Reveal>
@@ -25,7 +26,7 @@ export default function Gallery() {
           gap: 2.5,
         }}
       >
-        {featuredWorks.map((piece, index) => (
+        {galleryWorks.map((piece, index) => (
           <Reveal key={piece.title} delay={index * 110}>
             <Card className="art-card" sx={{ height: "100%" }}>
               <CardMedia component="img" height="330" image={piece.image} alt={piece.title} />
