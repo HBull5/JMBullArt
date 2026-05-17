@@ -266,8 +266,8 @@ body {
 .gallery-paint-background {
   position: absolute;
   inset: -52px auto auto -42px;
-  z-index: 0;
-  width: min(460px, 62vw);
+  z-index: -1;
+  width: min(560px, 72vw);
   height: 150px;
   overflow: visible;
   pointer-events: none;

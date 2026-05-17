@@ -12,12 +12,15 @@ export default function Gallery() {
     <>
     <Stack spacing={4}>
       <Reveal>
-        <Box sx={{ position: "relative", maxWidth: 760 }}>
+        <Box sx={{ position: "relative", isolation: "isolate", maxWidth: 760 }}>
           <GalleryPaintBackground />
           <Typography variant="h2" sx={{ position: "relative", zIndex: 1 }}>
             Gallery
           </Typography>
-          <Typography color="text.secondary" sx={{ mt: 1.5, fontSize: "1.08rem", lineHeight: 1.7 }}>
+          <Typography
+            color="text.secondary"
+            sx={{ position: "relative", zIndex: 1, mt: 1.5, fontSize: "1.08rem", lineHeight: 1.7 }}
+          >
             Murals, commissions, character pieces, portraits, florals, wildlife, and studio work from Blooming Bull
             Studios.
           </Typography>
