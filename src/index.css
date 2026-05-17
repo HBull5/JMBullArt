@@ -57,7 +57,7 @@ body {
 }
 
 .paint-background__brush {
-  opacity: 0.86;
+  opacity: 0.9;
 }
 
 .paint-background__stroke--edge,
@@ -69,17 +69,17 @@ body {
 
 .paint-background__stroke--edge {
   stroke: var(--paint-edge);
-  stroke-width: 98;
+  stroke-width: 104;
 }
 
 .paint-background__stroke--primary {
   stroke: var(--paint-primary);
-  stroke-width: 76;
+  stroke-width: 82;
 }
 
 .paint-background__stroke--secondary {
   stroke: var(--paint-secondary);
-  stroke-width: 38;
+  stroke-width: 30;
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: var(--paint-secondary-offset);
@@ -87,7 +87,7 @@ body {
 
 .paint-background__stroke--ridge {
   stroke: var(--paint-ridge);
-  stroke-width: 4;
+  stroke-width: 4.8;
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: var(--paint-draw-offset);
@@ -96,7 +96,7 @@ body {
 
 .paint-background__stroke--fray {
   stroke: var(--paint-fray);
-  stroke-width: 13;
+  stroke-width: 9;
   stroke-linecap: square;
   stroke-dasharray: 1;
   stroke-dashoffset: var(--paint-draw-offset);
@@ -267,7 +267,7 @@ body {
   position: absolute;
   inset: -52px auto auto -42px;
   z-index: -1;
-  width: min(560px, 72vw);
+  width: min(460px, 62vw);
   height: 150px;
   overflow: visible;
   pointer-events: none;

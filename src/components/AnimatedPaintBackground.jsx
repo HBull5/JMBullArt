@@ -126,17 +126,17 @@ export default function AnimatedPaintBackground() {
       sx={{
         display: { xs: "none", sm: "block" },
         "--paint-primary": isDark ? "rgba(199, 154, 209, 0.22)" : "rgba(141, 109, 149, 0.19)",
-        "--paint-secondary": isDark ? "rgba(154, 177, 142, 0.15)" : "rgba(113, 138, 103, 0.12)",
-        "--paint-edge": isDark ? "rgba(199, 154, 209, 0.1)" : "rgba(141, 109, 149, 0.08)",
-        "--paint-ridge": isDark ? "rgba(246, 239, 232, 0.12)" : "rgba(47, 41, 36, 0.09)",
-        "--paint-fray": isDark ? "rgba(199, 154, 209, 0.16)" : "rgba(141, 109, 149, 0.13)",
+        "--paint-secondary": isDark ? "rgba(154, 177, 142, 0.11)" : "rgba(113, 138, 103, 0.08)",
+        "--paint-edge": isDark ? "rgba(199, 154, 209, 0.08)" : "rgba(141, 109, 149, 0.07)",
+        "--paint-ridge": isDark ? "rgba(246, 239, 232, 0.14)" : "rgba(47, 41, 36, 0.11)",
+        "--paint-fray": isDark ? "rgba(199, 154, 209, 0.2)" : "rgba(141, 109, 149, 0.16)",
       }}
     >
       <svg className="paint-background__svg" viewBox="0 0 1440 2400" preserveAspectRatio="none">
         <defs>
           <filter id="paint-roughen" x="-14%" y="-8%" width="128%" height="116%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.018 0.13" numOctaves="4" seed="11" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="24" xChannelSelector="R" yChannelSelector="G" />
+            <feTurbulence type="fractalNoise" baseFrequency="0.022 0.16" numOctaves="4" seed="11" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="16" xChannelSelector="R" yChannelSelector="G" />
           </filter>
         </defs>
 
