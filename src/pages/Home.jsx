@@ -62,9 +62,13 @@ export default function Home() {
             src={images.jessicaHeadshot}
             alt="Artwork from Blooming Bull Studios"
             sx={{
-              minHeight: { xs: 320, md: 560 },
-              maxHeight: 680,
+              height: { xs: 220, sm: 300, md: "auto" },
+              minHeight: { xs: 220, sm: 300, md: 560 },
+              maxHeight: { xs: 260, sm: 340, md: 680 },
               boxShadow: "0 28px 80px rgba(47, 41, 36, 0.18)",
+            }}
+            imageSx={{
+              objectPosition: { xs: "center 52%", sm: "center 48%", md: "center center" },
             }}
           />
         </Reveal>
